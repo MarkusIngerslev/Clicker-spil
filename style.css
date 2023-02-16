@@ -1,0 +1,36 @@
+img {
+  width: 100%;
+}
+#screen {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  aspect-ratio: 16/9;
+  width: 100%;
+}
+
+#game {
+  grid-area: 1/1;
+  display: grid;
+
+  grid-template: 100% 100%;
+}
+#game_elements {
+  aspect-ratio: 16/9;
+  position: relative;
+  overflow: hidden;
+}
+
+#game_background {
+  grid-area: 1/1;
+  background-image: url(img/forest_baggrund.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+#duck_container {
+  position: absolute;
+  width: 10%;
+  top: 10%;
+  left: 20%;
+}
