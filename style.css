@@ -31,38 +31,70 @@ img {
   background-size: cover;
 }
 
-#duck_container {
+#duck1_container {
   position: absolute;
-  width: 16%;
-  top: 10%;
-  left: 20%;
+  width: 12%;
+  top: 21%;
+  left: 40%;
   transform: scaleX(-1);
 }
 
-#goose_container {
+#duck2_container {
   position: absolute;
-  width: 20%;
-  top: 40%;
-  left: 50%;
+  width: 12%;
+  top: 41%;
+  left: 31%;
+  transform: scaleX(-1);
+}
+#duck3_container {
+  position: absolute;
+  width: 12%;
+  top: 62%;
+  left: 36%;
   transform: scaleX(-1);
 }
 
-#dog_container {
+#goose1_container {
   position: absolute;
-  width: 30%;
-  top: 65%;
+  width: 14%;
+  top: 27%;
+  left: 70%;
+  transform: scaleX(-1);
+}
+#goose2_container {
+  position: absolute;
+  width: 14%;
+  top: 55%;
+  left: 60%;
+  transform: scaleX(-1);
+}
+
+#dog1_container {
+  position: absolute;
+  width: 25%;
+  top: 70%;
   left: 8%;
   transform: scaleX(-1);
 }
 
+#dog2_container {
+  position: absolute;
+  width: 25%;
+  top: 33%;
+  left: 3%;
+  transform: scaleX(-1);
+}
+
 #game_ui {
-  background: rgba(128, 128, 128, 0.2);
+  position: relative;
+  overflow: hidden;
+  grid-area: 1/1;
 }
 
 #score_board {
   position: absolute;
   width: 10%;
-  top: 5%;
+  top: 2%;
   right: 3%;
 }
 
@@ -72,8 +104,8 @@ img {
   column-gap: 3px;
 
   position: absolute;
-  width: 15%;
-  top: 20%;
+  width: 12%;
+  top: 15%;
   right: 3%;
 }
 
