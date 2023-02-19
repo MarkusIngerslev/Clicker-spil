@@ -1,6 +1,7 @@
 body {
   margin: 0;
 }
+
 img {
   width: 100%;
 }
@@ -18,11 +19,6 @@ img {
 
   grid-template: 100% / 100%;
 }
-#game_elements {
-  position: relative;
-  overflow: hidden;
-  grid-area: 1/1;
-}
 
 #game_background {
   grid-area: 1/1;
@@ -31,12 +27,21 @@ img {
   background-size: cover;
 }
 
+/* =====================
+    Alle game elements
+======================== */
+
+#game_elements {
+  position: relative;
+  overflow: hidden;
+  grid-area: 1/1;
+}
+
 #duck1_container {
   position: absolute;
   width: 12%;
   top: 21%;
   left: 40%;
-  transform: scaleX(-1);
 }
 
 #duck2_container {
@@ -44,14 +49,12 @@ img {
   width: 12%;
   top: 41%;
   left: 31%;
-  transform: scaleX(-1);
 }
 #duck3_container {
   position: absolute;
   width: 12%;
   top: 62%;
   left: 36%;
-  transform: scaleX(-1);
 }
 
 #goose1_container {
@@ -59,31 +62,31 @@ img {
   width: 14%;
   top: 27%;
   left: 70%;
-  transform: scaleX(-1);
 }
 #goose2_container {
   position: absolute;
   width: 14%;
   top: 55%;
   left: 60%;
-  transform: scaleX(-1);
 }
 
 #dog1_container {
   position: absolute;
   width: 25%;
-  top: 70%;
-  left: 8%;
-  transform: scaleX(-1);
+  top: 33%;
+  left: 3%;
 }
 
 #dog2_container {
   position: absolute;
   width: 25%;
-  top: 33%;
-  left: 3%;
-  transform: scaleX(-1);
+  top: 70%;
+  left: 8%;
 }
+
+/* =====================
+    Alle ui elements
+======================== */
 
 #game_ui {
   position: relative;

@@ -1,0 +1,99 @@
+/* ===================
+    Duck animation
+====================== */
+
+.duck1_move-left {
+  animation-name: duck_move-left;
+  animation-delay: 5s;
+  animation-duration: 11s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
+}
+.duck2_move-left {
+  animation-name: duck_move-left;
+  animation-delay: 2s;
+  animation-duration: 9s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
+}
+.duck3_move-left {
+  animation-name: duck_move-left;
+  animation-duration: 10s;
+  animation-delay: 12s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
+}
+
+@keyframes duck_move-left {
+  0% {
+    transform: translate(-450%, 0);
+  }
+  100% {
+    transform: translate(600%, 0);
+  }
+}
+
+/* ===================
+    Goose animation
+====================== */
+
+.goose1_move_left {
+  animation-name: goose_move-left;
+  animation-duration: 13s;
+  animation-delay: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
+}
+
+.goose2_move_left {
+  animation-name: goose_move-left;
+  animation-duration: 8s;
+  animation-delay: 8s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
+}
+
+@keyframes goose_move-left {
+  0% {
+    transform: translate(-600%, 0);
+  }
+  100% {
+    transform: translate(300%, 0);
+  }
+}
+
+/* =================
+    Dog animation
+==================== */
+
+.dog1_move_left {
+  animation-name: dog_move-left;
+  animation-duration: 13s;
+  animation-delay: 20s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
+}
+
+.dog2_move_left {
+  animation-name: dog_move-left;
+  animation-duration: 6s;
+  animation-delay: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
+}
+
+@keyframes dog_move-left {
+  0% {
+    transform: translate(-150%, 0);
+  }
+  100% {
+    transform: translate(400%, 0);
+  }
+}
