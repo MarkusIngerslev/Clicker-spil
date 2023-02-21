@@ -3,6 +3,7 @@
 window.addEventListener("load", initGame);
 
 let points = 0;
+let lives = 0;
 
 function initGame() {
   console.log("start");
@@ -16,9 +17,31 @@ function initGame() {
 
 // Scoreboard
 
-function displayNumber() {
+// Tæller points
+function incrementPoints() {
+  console.log("incrementPoints");
+  points++;
+  displayPoints();
+}
+
+// Tilføjer points til scoreboard
+function displayPoints() {
   console.log("displayNumber");
   document.querySelector("#point_count").textContent = points;
+}
+
+// Tæller lives
+function decrementLives() {
+  console.log("decrementLives");
+  lives++;
+  displayDecrementedLives();
+}
+
+// fjerner lives fra lifeboard
+function displayDecrementedLives() {
+  console.log("displayDecrementedLives");
+  document.querySelector("#heart" + lives).classList.remove("active_heart");
+  document.querySelector("#heart" + lives).classList.add("broken_heart");
 }
 
 // Clicking on a good element
@@ -31,16 +54,13 @@ function duckClick() {
   document.querySelector("#duck1_container").classList.add("paused");
   document.querySelector("#duck1_sprite").classList.add("zoom_out");
 
-  // Tilføjer nummer til variablen points
-  console.log("plusNumber");
-  points++;
-  displayNumber();
-
   //når forsvind animationen er færdig, duckGone
-
   document
     .querySelector("#duck1_container")
     .addEventListener("animationend", duckGone);
+
+  // Tilføjer +1 til points ved click
+  incrementPoints();
 }
 
 function duckGone() {
@@ -75,14 +95,13 @@ function dogClick() {
     .querySelector("#dog1_container")
     .removeEventListener("click", dogClick);
 
+  // fjern -1 fra lives ved click
+  decrementLives();
+
   // pauser move animationen for hund-container
   document.querySelector("#dog1_container").classList.add("paused");
   // laver zoom_out animation på selve spriten af hunden
   document.querySelector("#dog1_sprite").classList.add("zoom_in");
-
-  //erstater classen active heart med broken heart i scoreboard
-  document.querySelector("#heart1_sprite").classList.remove("active_heart");
-  document.querySelector("#heart1_sprite").classList.add("broken_heart");
 
   //når forsvind animationen er færdig så kør dogGone event
   document
