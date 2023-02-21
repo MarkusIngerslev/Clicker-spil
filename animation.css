@@ -1,33 +1,36 @@
 /* ===================
     Duck animation
 ====================== */
-
-.duck1_move-left {
-  animation-name: duck_move-left;
-  animation-delay: 5s;
+.duck_move {
+  animation-name: duck_move-right;
+  animation-delay: 1s;
   animation-duration: 11s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-fill-mode: backwards;
 }
-.duck2_move-left {
-  animation-name: duck_move-left;
+
+/* Virker, men prøver på en and adgangen 
+
+#duck2_container {
+  animation-name: duck_move-right;
   animation-delay: 2s;
   animation-duration: 9s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-fill-mode: backwards;
 }
-.duck3_move-left {
-  animation-name: duck_move-left;
+#duck3_container {
+  animation-name: duck_move-right;
   animation-duration: 10s;
   animation-delay: 12s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-fill-mode: backwards;
 }
+*/
 
-@keyframes duck_move-left {
+@keyframes duck_move-right {
   0% {
     transform: translate(-450%, 0);
   }
@@ -40,8 +43,9 @@
     Goose animation
 ====================== */
 
+/* Virker, men prøver med kun en god og dårlig ting.
 .goose1_move_left {
-  animation-name: goose_move-left;
+  animation-name: goose_move-right;
   animation-duration: 13s;
   animation-delay: 15s;
   animation-timing-function: linear;
@@ -50,15 +54,16 @@
 }
 
 .goose2_move_left {
-  animation-name: goose_move-left;
+  animation-name: goose_move-right;
   animation-duration: 8s;
   animation-delay: 8s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-fill-mode: backwards;
 }
+*/
 
-@keyframes goose_move-left {
+@keyframes goose_move-right {
   0% {
     transform: translate(-600%, 0);
   }
@@ -71,29 +76,57 @@
     Dog animation
 ==================== */
 
-.dog1_move_left {
-  animation-name: dog_move-left;
+.dog_move {
+  animation-name: dog_move-right;
   animation-duration: 13s;
-  animation-delay: 20s;
+  animation-delay: 1s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-fill-mode: backwards;
 }
 
+/* Virker, men prøver med kun en hund adgangen.
 .dog2_move_left {
-  animation-name: dog_move-left;
+  animation-name: dog_move-right;
   animation-duration: 6s;
   animation-delay: 15s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-fill-mode: backwards;
 }
-
-@keyframes dog_move-left {
+*/
+@keyframes dog_move-right {
   0% {
     transform: translate(-150%, 0);
   }
   100% {
     transform: translate(400%, 0);
   }
+}
+
+/* ===================
+    General animation
+====================== */
+.goodClick {
+  animation-name: goodClick;
+  animation-duration: 1.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+}
+
+@keyframes goodClick {
+  0% {
+    transform: scale(1);
+  }
+  99.9% {
+    transform: scale(0.9) rotateZ(720deg);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+.paused {
+  animation-play-state: paused;
 }

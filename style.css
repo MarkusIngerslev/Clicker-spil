@@ -32,9 +32,9 @@ img {
 ======================== */
 
 #game_elements {
-  position: relative;
-  overflow: hidden;
   grid-area: 1/1;
+  overflow: hidden;
+  position: relative;
 }
 
 #duck1_container {
@@ -87,39 +87,48 @@ img {
 /* =====================
     Alle ui elements
 ======================== */
-
 #game_ui {
-  position: relative;
-  overflow: hidden;
-  grid-area: 1/1;
+  position: absolute;
+  top: 1vw;
+  right: 3vw;
+  color: #fff;
+
+  font-size: 2em;
+  font-family: sans-serif;
+
+  pointer-events: none;
 }
 
 #score_board {
-  position: absolute;
-  width: 10%;
-  top: 2%;
-  right: 3%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0.1em;
+}
+
+#point_count {
+  white-space: nowrap;
+  text-align: right;
+  padding-top: 1vw;
+}
+
+#score_board_sprite {
+  width: 3em;
 }
 
 #life_board {
+  margin-block-start: 0.2em;
   display: grid;
-  grid-template-columns: 33% 33% 33%;
-  column-gap: 3px;
-
-  position: absolute;
-  width: 12%;
-  top: 15%;
-  right: 3%;
+  grid-template-columns: 1.5em 1.5em 1.5em;
 }
 
-.heart1 {
-  grid-column: 1/2;
+#life_board img {
+  width: 100%;
 }
 
-.heart2 {
-  grid-column: 2/3;
+.active_heart {
+  filter: drop-shadow(0 0 2px yellow);
 }
 
-.heart3 {
-  grid-column: 3/4;
+.broken_heart {
+  filter: grayscale(75%) blur(0.5px);
 }
