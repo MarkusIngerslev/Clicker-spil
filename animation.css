@@ -3,32 +3,29 @@
 ====================== */
 .duck_move {
   animation-name: duck_move-right;
-  animation-delay: 1s;
   animation-duration: 11s;
+  animation-delay: 4s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-fill-mode: backwards;
 }
 
-/* Virker, men prøver på en and adgangen 
-
-#duck2_container {
+.duck_move2 {
   animation-name: duck_move-right;
-  animation-delay: 2s;
   animation-duration: 9s;
+  animation-delay: 2s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-fill-mode: backwards;
 }
-#duck3_container {
+.duck_move3 {
   animation-name: duck_move-right;
   animation-duration: 10s;
-  animation-delay: 12s;
+  animation-delay: 8s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-fill-mode: backwards;
 }
-*/
 
 @keyframes duck_move-right {
   0% {
@@ -43,8 +40,7 @@
     Goose animation
 ====================== */
 
-/* Virker, men prøver med kun en god og dårlig ting.
-.goose1_move_left {
+.goose_move {
   animation-name: goose_move-right;
   animation-duration: 13s;
   animation-delay: 15s;
@@ -53,7 +49,7 @@
   animation-fill-mode: backwards;
 }
 
-.goose2_move_left {
+.goose_move2 {
   animation-name: goose_move-right;
   animation-duration: 8s;
   animation-delay: 8s;
@@ -61,7 +57,6 @@
   animation-iteration-count: infinite;
   animation-fill-mode: backwards;
 }
-*/
 
 @keyframes goose_move-right {
   0% {
@@ -85,8 +80,7 @@
   animation-fill-mode: backwards;
 }
 
-/* Virker, men prøver med kun en hund adgangen.
-.dog2_move_left {
+.dog_move2 {
   animation-name: dog_move-right;
   animation-duration: 6s;
   animation-delay: 15s;
@@ -94,7 +88,7 @@
   animation-iteration-count: infinite;
   animation-fill-mode: backwards;
 }
-*/
+
 @keyframes dog_move {
   0% {
     transform: translate(-150%, 0);

@@ -7,15 +7,43 @@ let lives = 0;
 
 function initGame() {
   console.log("start");
+
+  // Sætter liv og points til start værdier
+  lives = 3;
+  points = 0;
+
+  // Til føjer bevægelse til hver container
   document.querySelector("#duck1_container").classList.add("duck_move");
+  document.querySelector("#duck2_container").classList.add("duck_move2");
+  document.querySelector("#duck3_container").classList.add("duck_move3");
+  document.querySelector("#goose1_container").classList.add("goose_move");
+  document.querySelector("#goose2_container").classList.add("goose_move3");
   document.querySelector("#dog1_container").classList.add("dog_move");
+  document.querySelector("#dog2_container").classList.add("dog_move2");
+
+  // Tilføjer click event til hver container
   document
     .querySelector("#duck1_container")
     .addEventListener("click", duckClick);
+  document
+    .querySelector("#duck2_container")
+    .addEventListener("click", duckClick2);
+  document
+    .querySelector("#duck3_container")
+    .addEventListener("click", duckClick3);
+  document
+    .querySelector("#goose1_container")
+    .addEventListener("click", gooseClick);
+  document
+    .querySelector("#goose1_container")
+    .addEventListener("click", gooseClick2);
   document.querySelector("#dog1_container").addEventListener("click", dogClick);
+  document
+    .querySelector("#dog2_container")
+    .addEventListener("click", dogClick2);
 }
 
-// Scoreboard
+//  ====== Scoreboard ====== \\
 
 // Tæller points
 function incrementPoints() {
@@ -33,8 +61,13 @@ function displayPoints() {
 // Tæller lives
 function decrementLives() {
   console.log("decrementLives");
-  lives++;
-  displayDecrementedLives();
+
+  if (lives <= 0) {
+    gameOver();
+  } else {
+    displayDecrementedLives();
+  }
+  lives--;
 }
 
 // fjerner lives fra lifeboard
@@ -44,7 +77,7 @@ function displayDecrementedLives() {
   document.querySelector("#heart" + lives).classList.add("broken_heart");
 }
 
-// Clicking on a good element
+// ====== Clicking on a good element ====== \\
 
 function duckClick() {
   console.log("duckClick");
@@ -86,7 +119,8 @@ function duckGone() {
     .addEventListener("click", duckClick);
 }
 
-// Clicking on a bad element
+// ====== Clicking on a bad element ====== \\
+
 function dogClick() {
   console.log("dogClick");
 
@@ -129,3 +163,17 @@ function dogGone() {
   // Tilføjer event så anden kan klikkes på igen
   document.querySelector("#dog1_container").addEventListener("click", dogClick);
 }
+
+// ====== End of game ====== \\
+
+function gameOver() {
+  console.log("gameOver");
+  document.querySelector("#game_over").classList.remove("hidden");
+  animationEnd();
+}
+function levelComplete() {
+  console.log("levelComplete");
+  document.querySelector("#level_complete").classList.remove("hidden");
+  animationEnd();
+}
+function animationEnd() {}

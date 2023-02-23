@@ -27,15 +27,41 @@ img {
   background-size: cover;
 }
 
-/* =====================
-    Alle game elements
-======================== */
-
 #game_elements {
   grid-area: 1/1;
   overflow: hidden;
   position: relative;
 }
+
+#game_over {
+  grid-area: 1 /1;
+  z-index: 999;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background-image: linear-gradient(150deg, #c90303 0%, #790909 100%);
+  color: #ffffff;
+}
+
+#level_complete {
+  grid-area: 1 /1;
+  z-index: 999;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background-image: linear-gradient(150deg, #20c903 0%, #09793b 100%);
+  color: #ffffff;
+}
+
+.hidden,
+#game_over.hidden,
+#level_complete.hidden {
+  display: none;
+}
+
+/* =====================
+    Alle game elements
+======================== */
 
 #duck1_container {
   position: absolute;
