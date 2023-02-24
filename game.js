@@ -37,7 +37,9 @@ function initGame() {
   document
     .querySelector("#goose1_container")
     .addEventListener("click", gooseClick2);
-  document.querySelector("#dog1_container").addEventListener("click", dogClick);
+  document
+    .querySelector("#dog1_container")
+    .addEventListener("click", dogClick1);
   document
     .querySelector("#dog2_container")
     .addEventListener("click", dogClick2);
@@ -129,9 +131,6 @@ function dogClick() {
     .querySelector("#dog1_container")
     .removeEventListener("click", dogClick);
 
-  // fjern -1 fra lives ved click
-  decrementLives();
-
   // pauser move animationen for hund-container
   document.querySelector("#dog1_container").classList.add("paused");
   // laver zoom_out animation på selve spriten af hunden
@@ -141,6 +140,9 @@ function dogClick() {
   document
     .querySelector("#dog1_container")
     .addEventListener("animationend", dogGone);
+
+  // fjern -1 fra lives ved click
+  decrementLives();
 }
 
 function dogGone() {
