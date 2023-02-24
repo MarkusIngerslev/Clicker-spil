@@ -41,7 +41,7 @@
 ====================== */
 
 .goose_move {
-  animation-name: goose_move-right;
+  animation-name: goose-move-right;
   animation-duration: 13s;
   animation-delay: 15s;
   animation-timing-function: linear;
@@ -50,7 +50,7 @@
 }
 
 .goose_move2 {
-  animation-name: goose_move-right;
+  animation-name: goose-move-right;
   animation-duration: 8s;
   animation-delay: 8s;
   animation-timing-function: linear;
@@ -58,7 +58,7 @@
   animation-fill-mode: backwards;
 }
 
-@keyframes goose_move-right {
+@keyframes goose-move-right {
   0% {
     transform: translate(-600%, 0);
   }
@@ -81,7 +81,7 @@
 }
 
 .dog_move2 {
-  animation-name: dog_move-right;
+  animation-name: dog_move;
   animation-duration: 6s;
   animation-delay: 15s;
   animation-timing-function: linear;

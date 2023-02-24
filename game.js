@@ -17,7 +17,7 @@ function initGame() {
   document.querySelector("#duck2_container").classList.add("duck_move2");
   document.querySelector("#duck3_container").classList.add("duck_move3");
   document.querySelector("#goose1_container").classList.add("goose_move");
-  document.querySelector("#goose2_container").classList.add("goose_move3");
+  document.querySelector("#goose2_container").classList.add("goose_move2");
   document.querySelector("#dog1_container").classList.add("dog_move");
   document.querySelector("#dog2_container").classList.add("dog_move2");
 
@@ -52,6 +52,10 @@ function incrementPoints() {
   console.log("incrementPoints");
   points++;
   displayPoints();
+
+  if (points > 10) {
+    levelComplete();
+  }
 }
 
 // Tilføjer points til scoreboard
@@ -123,36 +127,36 @@ function duckGone() {
 
 // ====== Clicking on a bad element ====== \\
 
-function dogClick() {
+function dogClick1() {
   console.log("dogClick");
 
   //Fjerner event så hun ikke kan klikkes på igen
   document
     .querySelector("#dog1_container")
-    .removeEventListener("click", dogClick);
+    .removeEventListener("click", dogClick1);
 
   // pauser move animationen for hund-container
   document.querySelector("#dog1_container").classList.add("paused");
   // laver zoom_out animation på selve spriten af hunden
-  document.querySelector("#dog1_sprite").classList.add("zoom_in");
+  document.querySelector("#dog1_sprite").classList.add("zoom_out");
 
   //når forsvind animationen er færdig så kør dogGone event
   document
     .querySelector("#dog1_container")
-    .addEventListener("animationend", dogGone);
+    .addEventListener("animationend", dogGone1);
 
   // fjern -1 fra lives ved click
   decrementLives();
 }
 
-function dogGone() {
+function dogGone1() {
   //Fjerner evnet der startede functionen
   document
     .querySelector("#dog1_container")
-    .removeEventListener("animationend", dogGone);
+    .removeEventListener("animationend", dogGone1);
 
   //Fjerner class med forsvind animation
-  document.querySelector("#dog1_sprite").classList.remove("zoom_in");
+  document.querySelector("#dog1_sprite").classList.remove("zoom_out");
 
   //Fjerner pause fra container
   document.querySelector("#dog1_container").classList.remove("paused");
@@ -163,7 +167,9 @@ function dogGone() {
   document.querySelector("#dog1_container").classList.add("dog_move");
 
   // Tilføjer event så anden kan klikkes på igen
-  document.querySelector("#dog1_container").addEventListener("click", dogClick);
+  document
+    .querySelector("#dog1_container")
+    .addEventListener("click", dogClick1);
 }
 
 // ====== End of game ====== \\
