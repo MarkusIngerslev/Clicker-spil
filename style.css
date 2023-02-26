@@ -5,6 +5,11 @@ body {
 img {
   width: 100%;
 }
+
+h2 {
+  font-size: 4em;
+}
+
 #screen {
   display: grid;
   grid-template-columns: 100%;

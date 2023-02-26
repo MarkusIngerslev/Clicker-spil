@@ -26,26 +26,30 @@ function initGame() {
     .querySelector("#duck1_container")
     .addEventListener("click", duckClick);
   document
-    .querySelector("#duck2_container")
-    .addEventListener("click", duckClick2);
-  document
-    .querySelector("#duck3_container")
-    .addEventListener("click", duckClick3);
-  document
-    .querySelector("#goose1_container")
-    .addEventListener("click", gooseClick);
-  document
-    .querySelector("#goose1_container")
-    .addEventListener("click", gooseClick2);
-  document
     .querySelector("#dog1_container")
     .addEventListener("click", dogClick1);
   document
     .querySelector("#dog2_container")
     .addEventListener("click", dogClick2);
+
+  // Ikke brugte eventlisteners
+  // document
+  //   .querySelector("#duck2_container")
+  //   .addEventListener("click", duckClick2);
+  // document
+  //   .querySelector("#duck3_container")
+  //   .addEventListener("click", duckClick3);
+  // document
+  //   .querySelector("#goose1_container")
+  //   .addEventListener("click", gooseClick);
+  // document
+  //   .querySelector("#goose2_container")
+  //   .addEventListener("click", gooseClick2);
 }
 
+// ========================= \\
 //  ====== Scoreboard ====== \\
+// ========================= \\
 
 // Tæller points
 function incrementPoints() {
@@ -53,7 +57,7 @@ function incrementPoints() {
   points++;
   displayPoints();
 
-  if (points > 10) {
+  if (points >= 10) {
     levelComplete();
   }
 }
@@ -83,7 +87,25 @@ function displayDecrementedLives() {
   document.querySelector("#heart" + lives).classList.add("broken_heart");
 }
 
+// ========================= \\
+// ====== End of game ====== \\
+// ========================= \\
+
+function gameOver() {
+  console.log("gameOver");
+  document.querySelector("#game_over").classList.remove("hidden");
+  animationEnd();
+}
+function levelComplete() {
+  console.log("levelComplete");
+  document.querySelector("#level_complete").classList.remove("hidden");
+  animationEnd();
+}
+function animationEnd() {}
+
+// ======================================== \\
 // ====== Clicking on a good element ====== \\
+// ======================================== \\
 
 function duckClick() {
   console.log("duckClick");
@@ -125,8 +147,11 @@ function duckGone() {
     .addEventListener("click", duckClick);
 }
 
+// ======================================= \\
 // ====== Clicking on a bad element ====== \\
+// ======================================= \\
 
+// function for når den første hund klikkes på
 function dogClick1() {
   console.log("dogClick");
 
@@ -149,6 +174,7 @@ function dogClick1() {
   decrementLives();
 }
 
+// funtion til at få hunden tilbage på skærmen
 function dogGone1() {
   //Fjerner evnet der startede functionen
   document
@@ -172,16 +198,48 @@ function dogGone1() {
     .addEventListener("click", dogClick1);
 }
 
-// ====== End of game ====== \\
+// Function for når den anden hund klikkes på
+function dogClick2() {
+  console.log("dogClick");
 
-function gameOver() {
-  console.log("gameOver");
-  document.querySelector("#game_over").classList.remove("hidden");
-  animationEnd();
+  //Fjerner event så hun ikke kan klikkes på igen
+  document
+    .querySelector("#dog2_container")
+    .removeEventListener("click", dogClick2);
+
+  // pauser move animationen for hund-container
+  document.querySelector("#dog2_container").classList.add("paused");
+  // laver zoom_out animation på selve spriten af hunden
+  document.querySelector("#dog2_sprite").classList.add("zoom_out");
+
+  //når forsvind animationen er færdig så kør dogGone event
+  document
+    .querySelector("#dog2_container")
+    .addEventListener("animationend", dogGone2);
+
+  // fjern -1 fra lives ved click
+  decrementLives();
 }
-function levelComplete() {
-  console.log("levelComplete");
-  document.querySelector("#level_complete").classList.remove("hidden");
-  animationEnd();
+
+function dogGone2() {
+  //Fjerner evnet der startede functionen
+  document
+    .querySelector("#dog2_container")
+    .removeEventListener("animationend", dogGone2);
+
+  //Fjerner class med forsvind animation
+  document.querySelector("#dog2_sprite").classList.remove("zoom_out");
+
+  //Fjerner pause fra container
+  document.querySelector("#dog2_container").classList.remove("paused");
+
+  //Genstarter bevægelse fra venstre mod højre
+  document.querySelector("#dog2_container").classList.remove("dog_move2");
+  document.querySelector("#dog2_container").offsetWidth;
+  document.querySelector("#dog2_container").classList.add("dog_move2");
+
+  // Tilføjer event så anden kan klikkes på igen
+  document
+    .querySelector("#dog2_container")
+    .addEventListener("click", dogClick2);
 }
-function animationEnd() {}
