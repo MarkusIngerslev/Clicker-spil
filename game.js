@@ -34,7 +34,7 @@ function startAnimationer() {
   document.querySelector("#duck2_container").classList.add("duck_move");
   document.querySelector("#duck3_container").classList.add("duck_move");
   document.querySelector("#goose1_container").classList.add("goose_move");
-  document.querySelector("#goose2_container").classList.add("goose_move2");
+  document.querySelector("#goose2_container").classList.add("goose_move");
   document.querySelector("#dog1_container").classList.add("dog_move");
   document.querySelector("#dog2_container").classList.add("dog_move");
 }
@@ -106,13 +106,24 @@ function positionRestart() {
 // ====== Scoreboard ====== \\
 // ======================== \\
 
-// Tæller points
-function incrementPoints() {
-  console.log("incrementPoints");
+// Tæller points for duck
+function incrementDuckPoints() {
+  console.log("incrementDuckPoints");
   points++;
   displayPoints();
 
-  if (points >= 10) {
+  if (points >= 30) {
+    levelComplete();
+  }
+}
+
+function incrementGoosePoints() {
+  console.log("incrementGoosePoints");
+  points = points + 2;
+  console.log(points);
+  displayPoints();
+
+  if (points >= 30) {
     levelComplete();
   }
 }
@@ -150,13 +161,16 @@ function gameOver() {
   console.log("gameOver");
   document.querySelector("#game_over").classList.remove("hidden");
   animationEnd();
+  endClick();
 }
 function levelComplete() {
   console.log("levelComplete");
   document.querySelector("#level_complete").classList.remove("hidden");
   animationEnd();
+  endClick();
 }
 function animationEnd() {
+  console.log("animationEnd");
   document.querySelector("#duck1_container").classList.remove("duck_move");
   document.querySelector("#duck2_container").classList.remove("duck_move");
   document.querySelector("#duck3_container").classList.remove("duck_move");
@@ -167,6 +181,7 @@ function animationEnd() {
 }
 
 function endClick() {
+  console.log("endClick");
   document
     .querySelector("#duck1_container")
     .removeEventListener("click", duckClick);
@@ -182,13 +197,12 @@ function endClick() {
   document
     .querySelector("#dog2_container")
     .removeEventListener("click", dogClick);
-
-  // document
-  //   .querySelector("#goose1_container")
-  //   .removeEventListener("click", gooseClick);
-  // document
-  //   .querySelector("#goose2_container")
-  //   .removeEventListener("click", gooseClick);
+  document
+    .querySelector("#goose1_container")
+    .removeEventListener("click", gooseClick);
+  document
+    .querySelector("#goose2_container")
+    .removeEventListener("click", gooseClick);
 }
 
 // ======================================== \\
@@ -212,10 +226,11 @@ function duckClick() {
   duck.addEventListener("animationend", duckGone);
 
   // Tilføjer +1 til points ved click
-  incrementPoints();
+  incrementDuckPoints();
 }
 
 function duckGone() {
+  console.log("duckGone");
   // Laver lokal variabel
   let duck = this;
 
@@ -235,6 +250,7 @@ function duckGone() {
 }
 
 function duckRestart() {
+  console.log("duckRestart");
   // laver lokal variabel
   let duck = this;
 
@@ -270,6 +286,7 @@ function duckRestart() {
 
   let speed = Math.floor(Math.random() * 6) + 1;
   duck.classList.add("speed" + speed);
+  console.log(`speed af ny duck er ${speed}`);
 }
 
 // =========== Goose elements ============ \\
@@ -291,10 +308,11 @@ function gooseClick() {
   goose.addEventListener("animationend", gooseGone);
 
   // Tilføjer +1 til points ved click
-  incrementPoints();
+  incrementGoosePoints();
 }
 
 function gooseGone() {
+  console.log("gooseGone");
   // Laver lokal variabel
   let goose = this;
 
@@ -314,6 +332,7 @@ function gooseGone() {
 }
 
 function gooseRestart() {
+  console.log("gooseRestart");
   // laver lokal variabel
   let goose = this;
 
@@ -349,6 +368,7 @@ function gooseRestart() {
 
   let speed = Math.floor(Math.random() * 6) + 1;
   goose.classList.add("speed" + speed);
+  console.log(`speed af ny goose er ${speed}`);
 }
 
 // ======================================= \\
@@ -379,6 +399,7 @@ function dogClick() {
 
 // funtion til at få hunden tilbage på skærmen
 function dogGone() {
+  console.log("dogGone");
   let dog = this;
   //Fjerner evnet der startede functionen
   dog.removeEventListener("animationend", dogGone);
@@ -397,6 +418,7 @@ function dogGone() {
 }
 
 function dogRestart() {
+  console.log("dogRestart");
   // laver lokal variabel
   let dog = this;
 
@@ -432,4 +454,5 @@ function dogRestart() {
 
   let speed = Math.floor(Math.random() * 6) + 1;
   dog.classList.add("speed" + speed);
+  console.log(`speed af ny dog er ${speed}`);
 }
