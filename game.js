@@ -3,25 +3,33 @@ window.addEventListener("load", ready);
 
 //globale variabler
 let points = 0;
-let lives = 0;
+let lives = 4;
 
 function ready() {
   console.log("JavaScript is ready!");
   document.querySelector("#btn_start").addEventListener("click", startGame);
+  document.querySelector("#btn_restart").addEventListener("click", startGame);
+  document
+    .querySelector("#btn_go_to_start")
+    .addEventListener("click", showStartScreen);
 }
 
 function startGame() {
-  console.log("start");
+  console.log("Game is starting");
 
   // Sætter liv og points til start værdier
-  lives = 3;
-  points = 0;
+  resetLives();
+  resetPoints();
+  showGameScreen();
 
   // skjuler start skærmen efter spillet starter
   document.querySelector("#start").classList.add("hidden");
 
   // Til føjer bevægelse til hver container
   startAnimationer();
+
+  // start timer
+  startTimer();
 
   // Tilføjer start positioner til containerne
   startPositioner();
@@ -110,6 +118,60 @@ function positionRestart() {
     .addEventListener("animationiteration", gooseRestart);
 }
 
+function showStartScreen() {
+  // Fjern hidden fra startskærm og tilføjer til game over og level complete.
+  document.querySelector("#start").classList.remove("hidden");
+  document.querySelector("#game_over").classList.add("hidden");
+  document.querySelector("#level_complete").classList.add("hidden");
+}
+
+function showGameScreen() {
+  document.querySelector("#start").classList.add("hidden");
+  document.querySelector("#game_over").classList.add("hidden");
+  document.querySelector("#level_complete").classList.add("hidden");
+}
+
+function resetLives() {
+  //Liv bliver sat til 3
+  lives = 4;
+
+  // nulstiller alle hearts så de ikke er grå.
+  document.querySelector("#heart1").classList.remove("broken_heart");
+  document.querySelector("#heart2").classList.remove("broken_heart");
+  document.querySelector("#heart3").classList.remove("broken_heart");
+
+  document.querySelector("#heart1").classList.add("active_heart");
+  document.querySelector("#heart2").classList.add("active_heart");
+  document.querySelector("#heart3").classList.add("active_heart");
+}
+
+function resetPoints() {
+  // nulstiller points
+  points = 0;
+  //nulstiller antallet af viste points
+  displayPoints();
+}
+
+function startTimer() {
+  // sætter timer-animationen i gang
+  document.querySelector("#time_sprite").classList.add("shrink");
+
+  // Tilføjer en eventlistener der lytter om animationen er færdig.
+  document
+    .querySelector("#time_sprite")
+    .addEventListener("animationend", timeIsUp);
+}
+
+function timeIsUp() {
+  console.log("Tiden er gået!");
+
+  if (points >= 30) {
+    levelComplete();
+  } else {
+    gameOver();
+  }
+}
+
 // ======================== \\
 // ====== Scoreboard ====== \\
 // ======================== \\
@@ -120,20 +182,21 @@ function incrementDuckPoints() {
   points++;
   displayPoints();
 
-  if (points >= 30) {
-    levelComplete();
-  }
+  // Ikke nødvendigt når der er en timer til at holde styr på points
+  // if (points >= 2) {
+  //   levelComplete();
+  // }
 }
 
 function incrementGoosePoints() {
   console.log("incrementGoosePoints");
   points = points + 2;
-  console.log(points);
   displayPoints();
 
-  if (points >= 30) {
-    levelComplete();
-  }
+  // Ikke nødvendigt når der er en timer til at holde styr på points
+  // if (points >= 30) {
+  //   levelComplete();
+  // }
 }
 
 // Tilføjer points til scoreboard
@@ -147,7 +210,7 @@ function decrementLives() {
   console.log("decrementLives");
   lives--;
 
-  if (lives <= 0) {
+  if (lives <= 1) {
     gameOver();
   } else {
     displayDecrementedLives();
