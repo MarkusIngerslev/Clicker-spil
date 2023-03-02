@@ -90,10 +90,17 @@
           <div id="time_board"><img src="" id="#" /></div>
         </div>
       </div>
-      <div id="start" class="hidden"></div>
+      <div id="start">
+        <h2>Duck Hunt ⌖</h2>
+        <p>Shoot 30 birds before time runds out!</p>
+        <button id="btn_start" class="pulse">Start</button>
+      </div>
       <div id="game_over" class="hidden"><h2>Game Over</h2></div>
       <div id="level_complete" class="hidden"><h2>Level Complete</h2></div>
     </div>
+
+    <!-- musik og lyd elementer -->
+    <audio src="sounds/game_over.mp3" id="sound_gameOver" controls></audio>
 
     <script src="game.js"></script>
   </body>

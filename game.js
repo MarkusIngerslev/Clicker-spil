@@ -1,16 +1,24 @@
 "use strict";
+window.addEventListener("load", ready);
 
-window.addEventListener("load", initGame);
-
+//globale variabler
 let points = 0;
 let lives = 0;
 
-function initGame() {
+function ready() {
+  console.log("JavaScript is ready!");
+  document.querySelector("#btn_start").addEventListener("click", startGame);
+}
+
+function startGame() {
   console.log("start");
 
   // Sætter liv og points til start værdier
   lives = 3;
   points = 0;
+
+  // skjuler start skærmen efter spillet starter
+  document.querySelector("#start").classList.add("hidden");
 
   // Til føjer bevægelse til hver container
   startAnimationer();
@@ -137,13 +145,13 @@ function displayPoints() {
 // Tæller lives
 function decrementLives() {
   console.log("decrementLives");
+  lives--;
 
   if (lives <= 0) {
     gameOver();
   } else {
     displayDecrementedLives();
   }
-  lives--;
 }
 
 // fjerner lives fra lifeboard
@@ -160,6 +168,7 @@ function displayDecrementedLives() {
 function gameOver() {
   console.log("gameOver");
   document.querySelector("#game_over").classList.remove("hidden");
+  document.querySelector("#sound_gameOver").play();
   animationEnd();
   endClick();
 }
