@@ -232,17 +232,16 @@ function gameOver() {
   console.log("gameOver");
   document.querySelector("#game_over").classList.remove("hidden");
   document.querySelector("#sound_gameOver").play();
-  animationEnd();
-  endClick();
+  stopGame();
 }
 function levelComplete() {
   console.log("levelComplete");
   document.querySelector("#level_complete").classList.remove("hidden");
-  animationEnd();
-  endClick();
+  stopGame();
 }
-function animationEnd() {
-  console.log("animationEnd");
+
+function stopGame() {
+  // Stopper animation
   document.querySelector("#duck1_container").classList.remove("duck_move");
   document.querySelector("#duck2_container").classList.remove("duck_move");
   document.querySelector("#duck3_container").classList.remove("duck_move");
@@ -250,10 +249,8 @@ function animationEnd() {
   document.querySelector("#goose2_container").classList.remove("goose_move2");
   document.querySelector("#dog1_container").classList.remove("dog_move");
   document.querySelector("#dog2_container").classList.remove("dog_move");
-}
 
-function endClick() {
-  console.log("endClick");
+  // fjerner click
   document
     .querySelector("#duck1_container")
     .removeEventListener("click", duckClick);
@@ -275,6 +272,9 @@ function endClick() {
   document
     .querySelector("#goose2_container")
     .removeEventListener("click", gooseClick);
+  // Stopper musik
+  // Fjerner timer
+  document.querySelector("#time_sprite").classList.remove("shrink");
 }
 
 // ======================================== \\

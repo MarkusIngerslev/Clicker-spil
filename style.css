@@ -191,30 +191,6 @@ h2 {
   transform-origin: right;
 }
 
-/* ========== Timer Animationer ==========*/
-
-.shrink {
-  animation-name: shrink_kf;
-  animation-duration: 60s;
-  animation-iteration-count: 1;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-}
-
-@keyframes shrink_kf {
-  0% {
-    scale: 1 1;
-    background-color: limegreen;
-  }
-  50% {
-    background-color: rgb((255), 230, 0);
-  }
-  100% {
-    scale: 0 1;
-    background-color: red;
-  }
-}
-
 /* ===================
     Animal positions
 ====================== */
@@ -338,15 +314,6 @@ p {
   animation-fill-mode: backwards;
 }
 
-.goose_move2 {
-  animation-name: goose-move-right;
-  animation-duration: 8s;
-  animation-delay: 8s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-fill-mode: backwards;
-}
-
 @keyframes goose-move-right {
   0% {
     transform: translate(-600%, 0);
@@ -369,15 +336,6 @@ p {
   animation-fill-mode: backwards;
 }
 
-.dog_move2 {
-  animation-name: dog_move;
-  animation-duration: 18s;
-  animation-delay: 2s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-fill-mode: backwards;
-}
-
 @keyframes dog_move {
   0% {
     transform: translate(-150%, 0);
@@ -390,6 +348,7 @@ p {
 /* ===================
     General animation
 ====================== */
+
 .zoom_out {
   animation-name: zoom_out;
   animation-duration: 1s;
@@ -431,4 +390,28 @@ p {
 
 .paused {
   animation-play-state: paused;
+}
+
+/* ========== Timer Animationer ==========*/
+
+.shrink {
+  animation-name: shrink_kf;
+  animation-duration: 60s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes shrink_kf {
+  0% {
+    scale: 1 1;
+    background-color: limegreen;
+  }
+  50% {
+    background-color: rgb((255), 230, 0);
+  }
+  100% {
+    scale: 0 1;
+    background-color: red;
+  }
 }
