@@ -1,0 +1,32 @@
+Ting jeg stadig mangler at tilføje.
+
+1. Start element
+- Sæt en ny baggrunds farve
+- Lav nye farve til knappen
+- Ny tekst i både h2 og p elementer
+
+2. Game element
+- Mangler skyde lyd
+- Mangler click på and lyd
+- Mangler click på gås lyd
+- Mangler click på hund lyd
+- Mangler baggrunds musik
+- Mangler intens musik de sidste 10 secound af rundten
+- Lav nye start positioner for alle dyr
+- Lave nye animationer for and
+- Lave nye animationer for hund
+- Lave nye animationer for gås
+- Få de 6 speed classer til at virke
+
+3. Game Over element
+- Sæt ny baggrunds farve
+- Sæt ny farve til knappen
+- Tilføj ekstra knap til start menu
+
+4. Level Complete element
+- Sæt ny baggrunds farve
+- Sæt ny farbe til knappen
+- Tilføj ekstra knap til at restarte spillet
+
+
+5. Ekstra ting
