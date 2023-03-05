@@ -119,7 +119,7 @@ function positionRestart() {
 }
 
 function showStartScreen() {
-  // Fjern hidden fra startskærm og tilføjer til game over og level complete.
+  // Fjern hidden  class fra startskærm og tilføjer til game over og level complete.
   document.querySelector("#start").classList.remove("hidden");
   document.querySelector("#game_over").classList.add("hidden");
   document.querySelector("#level_complete").classList.add("hidden");
@@ -132,7 +132,7 @@ function showGameScreen() {
 }
 
 function resetLives() {
-  //Liv bliver sat til 3
+  //Liv bliver sat til 4
   lives = 4;
 
   // nulstiller alle hearts så de ikke er grå.
@@ -370,16 +370,16 @@ function gooseClick() {
   // forhindre gentagne clicks
   goose.removeEventListener("click", gooseClick);
 
-  // stop duck container
+  // stop goose container
   goose.classList.add("paused");
 
-  // sæt forsvind-animation på coin sprite
+  // sæt forsvind-animation på goose sprite
   goose.querySelector("img").classList.add("zoom_out");
 
-  // når forsvind animationen er færdig, duckGone
+  // når forsvind animationen er færdig, gooseGone
   goose.addEventListener("animationend", gooseGone);
 
-  // Tilføjer +1 til points ved click
+  // Tilføjer +2 til points ved click
   incrementGoosePoints();
 }
 
