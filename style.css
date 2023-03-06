@@ -411,7 +411,7 @@ p {
 
 .shrink {
   animation-name: shrink_kf;
-  animation-duration: 10s;
+  animation-duration: 40s;
   animation-iteration-count: 1;
   animation-timing-function: linear;
   animation-fill-mode: forwards;

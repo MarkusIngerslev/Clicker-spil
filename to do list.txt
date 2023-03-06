@@ -6,11 +6,6 @@ Ting jeg stadig mangler at tilføje.
 - Ny tekst i både h2 og p elementer
 
 2. Game element
-- Mangler skyde lyd
-- Mangler click på and lyd
-- Mangler click på gås lyd
-- Mangler click på hund lyd
-- Mangler baggrunds musik
 - Mangler intens musik de sidste 10 secound af rundten
 
 

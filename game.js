@@ -22,6 +22,10 @@ function startGame() {
   resetPoints();
   showGameScreen();
 
+  // starter baggrundsmusik
+  document.querySelector("#sound_hunting").volume = 0.1;
+  document.querySelector("#sound_hunting").play();
+
   // skjuler start skærmen efter spillet starter
   document.querySelector("#start").classList.add("hidden");
 
@@ -165,7 +169,7 @@ function startTimer() {
 function timeIsUp() {
   console.log("Tiden er gået!");
 
-  if (points >= 10) {
+  if (points >= 30) {
     levelComplete();
   } else {
     gameOver();
@@ -228,6 +232,9 @@ function gameOver() {
 function levelComplete() {
   console.log("levelComplete");
   document.querySelector("#level_complete").classList.remove("hidden");
+
+  document.querySelector("#sound_levelComplete").volume = 0.2;
+  document.querySelector("#sound_levelComplete").play();
   stopGame();
   document.querySelector(
     "#endText"
@@ -235,6 +242,10 @@ function levelComplete() {
 }
 
 function stopGame() {
+  // Stopper musik
+  document.querySelector("#sound_hunting").pause();
+  document.querySelector("#sound_dogshot").pause();
+  document.querySelector("#sound_hunting").currentTime = 0;
   // fjerner click
   document
     .querySelector("#duck1_container")
@@ -281,8 +292,6 @@ function stopGame() {
     .querySelector("#dog2_container")
     .classList.remove("dog_move1", "dog_move2");
 
-  // Stopper musik
-
   // Fjerner timer
   document.querySelector("#time_sprite").classList.remove("shrink");
 }
@@ -306,6 +315,11 @@ function duckClick() {
 
   // når forsvind animationen er færdig, duckGone
   duck.addEventListener("animationend", duckGone);
+
+  // Afspillet duck-lyd
+  document.querySelector("#sound_gunshot").currentTime = 0;
+  document.querySelector("#sound_gunshot").volume = 0.05;
+  document.querySelector("#sound_gunshot").play();
 
   // Tilføjer +1 til points ved click
   incrementDuckPoints();
@@ -374,6 +388,11 @@ function gooseClick() {
   // når forsvind animationen er færdig, gooseGone
   goose.addEventListener("animationend", gooseGone);
 
+  // Afspillet goose-lyd
+  document.querySelector("#sound_gunshot").currentTime = 0;
+  document.querySelector("#sound_gunshot").volume = 0.05;
+  document.querySelector("#sound_gunshot").play();
+
   // Tilføjer +2 til points ved click
   incrementGoosePoints();
 }
@@ -441,6 +460,15 @@ function dogClick() {
 
   //når forsvind animationen er færdig så kør dogGone event
   dog.addEventListener("animationend", dogGone);
+
+  // Afspillet dog-lyd
+  document.querySelector("#sound_gunshot").currentTime = 0;
+  document.querySelector("#sound_gunshot").volume = 0.05;
+  document.querySelector("#sound_gunshot").play();
+
+  document.querySelector("#sound_dogshot").currentTime = 0;
+  document.querySelector("#sound_dogshot").volume = 0.1;
+  document.querySelector("#sound_dogshot").play();
 
   // fjern -1 fra lives ved click
   decrementLives();
