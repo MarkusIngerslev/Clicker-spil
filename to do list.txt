@@ -12,11 +12,7 @@ Ting jeg stadig mangler at tilføje.
 - Mangler click på hund lyd
 - Mangler baggrunds musik
 - Mangler intens musik de sidste 10 secound af rundten
-- Lav nye start positioner for alle dyr
-- Lave nye animationer for and
-- Lave nye animationer for hund
-- Lave nye animationer for gås
-- Få de 6 speed classer til at virke
+
 
 3. Game Over element
 - Sæt ny baggrunds farve
@@ -29,4 +25,3 @@ Ting jeg stadig mangler at tilføje.
 - Tilføj ekstra knap til at restarte spillet
 
 
-5. Ekstra ting

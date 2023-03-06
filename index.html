@@ -73,17 +73,17 @@
           <div id="life_board">
             <img
               src="./img/heart-pixel-art.png"
+              id="heart0"
+              class="active_heart"
+            />
+            <img
+              src="./img/heart-pixel-art.png"
               id="heart1"
               class="active_heart"
             />
             <img
               src="./img/heart-pixel-art.png"
               id="heart2"
-              class="active_heart"
-            />
-            <img
-              src="./img/heart-pixel-art.png"
-              id="heart3"
               class="active_heart"
             />
           </div>
@@ -97,7 +97,7 @@
       <div id="start">
         <h2>Duck Hunt ⌖</h2>
         <p>Shoot 30 birds before time runs out!</p>
-        <p>Ohh and please don't shot your dog 😬</p>
+        <p>Ohh and try not to shot your dog 😬</p>
         <button id="btn_start" class="pulse">Start</button>
       </div>
       <div id="game_over" class="hidden">
@@ -107,6 +107,7 @@
       </div>
       <div id="level_complete" class="hidden">
         <h2>Level Complete</h2>
+        <p id="endText"></p>
         <button id="btn_go_to_start" class="pulse">Go to start</button>
       </div>
     </div>

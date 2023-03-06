@@ -3,7 +3,7 @@ window.addEventListener("load", ready);
 
 //globale variabler
 let points = 0;
-let lives = 4;
+let lives = 3;
 
 function ready() {
   console.log("JavaScript is ready!");
@@ -46,31 +46,31 @@ function startGame() {
 // ========================== \\
 
 function startAnimationer() {
-  document.querySelector("#duck1_container").classList.add("duck_move");
-  document.querySelector("#duck2_container").classList.add("duck_move");
-  document.querySelector("#duck3_container").classList.add("duck_move");
-  document.querySelector("#goose1_container").classList.add("goose_move");
-  document.querySelector("#goose2_container").classList.add("goose_move");
-  document.querySelector("#dog1_container").classList.add("dog_move");
-  document.querySelector("#dog2_container").classList.add("dog_move");
+  document.querySelector("#duck1_container").classList.add("duck_move1");
+  document.querySelector("#duck2_container").classList.add("duck_move2");
+  document.querySelector("#duck3_container").classList.add("duck_move3");
+  document.querySelector("#goose1_container").classList.add("goose_move1");
+  document.querySelector("#goose2_container").classList.add("goose_move1");
+  document.querySelector("#dog1_container").classList.add("dog_move1");
+  document.querySelector("#dog2_container").classList.add("dog_move2");
 }
 
 function startPositioner() {
-  document.querySelector("#duck1_container").classList.add("position1");
-  document.querySelector("#duck2_container").classList.add("position2");
-  document.querySelector("#duck3_container").classList.add("position3");
-  document.querySelector("#goose1_container").classList.add("position4");
-  document.querySelector("#goose2_container").classList.add("position5");
-  document.querySelector("#dog1_container").classList.add("position6");
-  document.querySelector("#dog2_container").classList.add("position7");
+  document.querySelector("#duck1_container").classList.add("positionDuck1");
+  document.querySelector("#duck2_container").classList.add("positionDuck2");
+  document.querySelector("#duck3_container").classList.add("positionDuck3");
+  document.querySelector("#goose1_container").classList.add("positionGoose1");
+  document.querySelector("#goose2_container").classList.add("positionGoose2");
+  document.querySelector("#dog1_container").classList.add("positionDog1");
+  document.querySelector("#dog2_container").classList.add("positionDog2");
 
   document.querySelector("#duck1_container").classList.add("speed1");
   document.querySelector("#duck2_container").classList.add("speed2");
   document.querySelector("#duck3_container").classList.add("speed3");
   document.querySelector("#goose1_container").classList.add("speed4");
   document.querySelector("#goose2_container").classList.add("speed5");
-  document.querySelector("#dog1_container").classList.add("speed6");
-  document.querySelector("#dog2_container").classList.add("speed1");
+  document.querySelector("#dog1_container").classList.add("speedDog1");
+  document.querySelector("#dog2_container").classList.add("speedDog2");
 }
 
 function startClick() {
@@ -133,16 +133,16 @@ function showGameScreen() {
 
 function resetLives() {
   //Liv bliver sat til 4
-  lives = 4;
+  lives = 3;
 
   // nulstiller alle hearts så de ikke er grå.
+  document.querySelector("#heart0").classList.remove("broken_heart");
   document.querySelector("#heart1").classList.remove("broken_heart");
   document.querySelector("#heart2").classList.remove("broken_heart");
-  document.querySelector("#heart3").classList.remove("broken_heart");
 
+  document.querySelector("#heart0").classList.add("active_heart");
   document.querySelector("#heart1").classList.add("active_heart");
   document.querySelector("#heart2").classList.add("active_heart");
-  document.querySelector("#heart3").classList.add("active_heart");
 }
 
 function resetPoints() {
@@ -165,7 +165,7 @@ function startTimer() {
 function timeIsUp() {
   console.log("Tiden er gået!");
 
-  if (points >= 30) {
+  if (points >= 10) {
     levelComplete();
   } else {
     gameOver();
@@ -181,22 +181,12 @@ function incrementDuckPoints() {
   console.log("incrementDuckPoints");
   points++;
   displayPoints();
-
-  // Ikke nødvendigt når der er en timer til at holde styr på points
-  // if (points >= 2) {
-  //   levelComplete();
-  // }
 }
 
 function incrementGoosePoints() {
   console.log("incrementGoosePoints");
   points = points + 2;
   displayPoints();
-
-  // Ikke nødvendigt når der er en timer til at holde styr på points
-  // if (points >= 30) {
-  //   levelComplete();
-  // }
 }
 
 // Tilføjer points til scoreboard
@@ -210,7 +200,7 @@ function decrementLives() {
   console.log("decrementLives");
   lives--;
 
-  if (lives <= 1) {
+  if (lives <= 0) {
     gameOver();
   } else {
     displayDecrementedLives();
@@ -231,6 +221,7 @@ function displayDecrementedLives() {
 function gameOver() {
   console.log("gameOver");
   document.querySelector("#game_over").classList.remove("hidden");
+  document.querySelector("#sound_gameOver").volume = 0.25;
   document.querySelector("#sound_gameOver").play();
   stopGame();
 }
@@ -238,18 +229,12 @@ function levelComplete() {
   console.log("levelComplete");
   document.querySelector("#level_complete").classList.remove("hidden");
   stopGame();
+  document.querySelector(
+    "#endText"
+  ).textContent = `Du nået at få ${points} points🥳`;
 }
 
 function stopGame() {
-  // Stopper animation
-  document.querySelector("#duck1_container").classList.remove("duck_move");
-  document.querySelector("#duck2_container").classList.remove("duck_move");
-  document.querySelector("#duck3_container").classList.remove("duck_move");
-  document.querySelector("#goose1_container").classList.remove("goose_move");
-  document.querySelector("#goose2_container").classList.remove("goose_move2");
-  document.querySelector("#dog1_container").classList.remove("dog_move");
-  document.querySelector("#dog2_container").classList.remove("dog_move");
-
   // fjerner click
   document
     .querySelector("#duck1_container")
@@ -272,7 +257,32 @@ function stopGame() {
   document
     .querySelector("#goose2_container")
     .removeEventListener("click", gooseClick);
+
+  // Stopper animation
+  document
+    .querySelector("#duck1_container")
+    .classList.remove("duck_move1", "duck_move2", "duck_move3");
+  document
+    .querySelector("#duck2_container")
+    .classList.remove("duck_move1", "duck_move2", "duck_move3");
+  document
+    .querySelector("#duck3_container")
+    .classList.remove("duck_move1", "duck_move2", "duck_move3");
+  document
+    .querySelector("#goose1_container")
+    .classList.remove("goose_move1", "goose_move2");
+  document
+    .querySelector("#goose2_container")
+    .classList.remove("goose_move1", "goose_move2");
+  document
+    .querySelector("#dog1_container")
+    .classList.remove("dog_move1", "dog_move2");
+  document
+    .querySelector("#dog2_container")
+    .classList.remove("dog_move1", "dog_move2");
+
   // Stopper musik
+
   // Fjerner timer
   document.querySelector("#time_sprite").classList.remove("shrink");
 }
@@ -326,39 +336,24 @@ function duckRestart() {
   // laver lokal variabel
   let duck = this;
 
-  //Genstarter bevægelse fra venstre mod højre
-  duck.classList.remove("duck_move");
-  duck.offsetWidth;
-  duck.classList.add("duck_move");
+  // Genstarter bevægelsen fra venstre mod højre
+  duck.classList.remove("duck_move1", "duck_move2", "duck_move3");
+
+  let move = Math.floor(Math.random() * 3) + 1;
+  duck.classList.add("duck_move" + move);
 
   // Sætter nu position for container
-  duck.classList.remove(
-    "position1",
-    "position2",
-    "position3",
-    "position4",
-    "position5",
-    "position6",
-    "position7"
-  );
+  duck.classList.remove("positionDuck1", "positionDuck2", "positionDuck3");
 
-  let pos = Math.floor(Math.random() * 7) + 1;
+  let pos = Math.floor(Math.random() * 3) + 1;
 
-  duck.classList.add("position" + pos);
+  duck.classList.add("positionDuck" + pos);
 
   // sææter nu speed for container
-  duck.classList.remove(
-    "speed1",
-    "speed2",
-    "speed3",
-    "speed4",
-    "speed5",
-    "speed6"
-  );
+  duck.classList.remove("speed1", "speed2", "speed3", "speed4", "speed5");
 
-  let speed = Math.floor(Math.random() * 6) + 1;
+  let speed = Math.floor(Math.random() * 5) + 1;
   duck.classList.add("speed" + speed);
-  console.log(`speed af ny duck er ${speed}`);
 }
 
 // =========== Goose elements ============ \\
@@ -409,38 +404,20 @@ function gooseRestart() {
   let goose = this;
 
   //Genstarter bevægelse fra venstre mod højre
-  goose.classList.remove("goose_move");
+  goose.classList.remove("goose_move1", "goose_move2");
   goose.offsetWidth;
-  goose.classList.add("goose_move");
+  let move = Math.floor(Math.random() * 2) + 1;
+  goose.classList.add("goose_move" + move);
 
   // Sætter nu position for container
-  goose.classList.remove(
-    "position1",
-    "position2",
-    "position3",
-    "position4",
-    "position5",
-    "position6",
-    "position7"
-  );
-
-  let pos = Math.floor(Math.random() * 7) + 1;
-
-  goose.classList.add("position" + pos);
+  goose.classList.remove("positionGoose1", "positionGoose2");
+  let pos = Math.floor(Math.random() * 2) + 1;
+  goose.classList.add("positionGoose" + pos);
 
   // sææter nu speed for container
-  goose.classList.remove(
-    "speed1",
-    "speed2",
-    "speed3",
-    "speed4",
-    "speed5",
-    "speed6"
-  );
-
-  let speed = Math.floor(Math.random() * 6) + 1;
+  goose.classList.remove("speed1", "speed2", "speed3", "speed4", "speed5");
+  let speed = Math.floor(Math.random() * 5) + 1;
   goose.classList.add("speed" + speed);
-  console.log(`speed af ny goose er ${speed}`);
 }
 
 // ======================================= \\
@@ -495,36 +472,21 @@ function dogRestart() {
   let dog = this;
 
   //Genstarter bevægelse fra venstre mod højre
-  dog.classList.remove("dog_move");
-  dog.offsetWidth;
-  dog.classList.add("dog_move");
+  dog.classList.remove("dog_move1", "dog_move2");
+  let move = Math.floor(Math.random() * 2) + 1;
+  dog.classList.add("dog_move" + move);
 
   // Sætter nu position for container
-  dog.classList.remove(
-    "position1",
-    "position2",
-    "position3",
-    "position4",
-    "position5",
-    "position6",
-    "position7"
-  );
+  dog.classList.remove("positionDog1", "positionDog2");
 
-  let pos = Math.floor(Math.random() * 7) + 1;
+  let pos = Math.floor(Math.random() * 2) + 1;
 
-  dog.classList.add("position" + pos);
+  dog.classList.add("positionDog" + pos);
 
   // sææter nu speed for container
-  dog.classList.remove(
-    "speed1",
-    "speed2",
-    "speed3",
-    "speed4",
-    "speed5",
-    "speed6"
-  );
+  dog.classList.remove("speedDog1", "speedDog2");
 
-  let speed = Math.floor(Math.random() * 6) + 1;
-  dog.classList.add("speed" + speed);
+  let speed = Math.floor(Math.random() * 2) + 1;
+  dog.classList.add("speedDog" + speed);
   console.log(`speed af ny dog er ${speed}`);
 }

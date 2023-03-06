@@ -107,15 +107,11 @@ h2 {
 #dog1_container {
   position: absolute;
   width: 25%;
-
-  left: 3%;
 }
 
 #dog2_container {
   position: absolute;
   width: 25%;
-
-  left: 8%;
 }
 
 /* =====================
@@ -192,56 +188,6 @@ h2 {
 }
 
 /* ===================
-    Animal positions
-====================== */
-
-.position1 {
-  top: 21%;
-}
-.position2 {
-  top: 41%;
-}
-.position3 {
-  top: 62%;
-}
-.position4 {
-  top: 27%;
-}
-.position5 {
-  top: 55%;
-}
-.position6 {
-  top: 33%;
-}
-.position7 {
-  top: 70%;
-}
-
-.speed1 {
-  animation-duration: 9.5s;
-  animation-delay: 2s;
-}
-.speed2 {
-  animation-duration: 8s;
-  animation-delay: 6s;
-}
-.speed3 {
-  animation-duration: 13s;
-  animation-delay: 0.5s;
-}
-.speed4 {
-  animation-duration: 4s;
-  animation-delay: 3s;
-}
-.speed5 {
-  animation-duration: 7.4s;
-  animation-delay: 8s;
-}
-.speed6 {
-  animation-duration: 11.3s;
-  animation-delay: 10.5s;
-}
-/* ===================
     Start skærm
 ====================== */
 
@@ -283,8 +229,8 @@ p {
 /* ===================
     Duck animation
 ====================== */
-.duck_move {
-  animation-name: duck_move-right;
+.duck_move1 {
+  animation-name: duck_move_right1;
   animation-duration: 11s;
   animation-delay: 4s;
   animation-timing-function: linear;
@@ -292,7 +238,24 @@ p {
   animation-fill-mode: backwards;
 }
 
-@keyframes duck_move-right {
+.duck_move2 {
+  animation-name: duck_move_right2;
+  animation-duration: 10s;
+  animation-delay: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
+}
+
+.duck_move3 {
+  animation-name: duck_move_right3;
+  animation-duration: 10s;
+  animation-delay: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
+}
+@keyframes duck_move_right1 {
   0% {
     transform: translate(-450%, 0);
   }
@@ -300,13 +263,38 @@ p {
     transform: translate(600%, 0);
   }
 }
+@keyframes duck_move_right2 {
+  0% {
+    transform: translate(-450%, 220%);
+  }
+  100% {
+    transform: translate(600%, -140%);
+  }
+}
+
+@keyframes duck_move_right3 {
+  0% {
+    transform: translate(-450%, -180%);
+  }
+  100% {
+    transform: translate(600%, 50%);
+  }
+}
 
 /* ===================
     Goose animation
 ====================== */
 
-.goose_move {
-  animation-name: goose-move-right;
+.goose_move1 {
+  animation-name: goose_move_right1;
+  animation-duration: 13s;
+  animation-delay: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
+}
+.goose_move2 {
+  animation-name: goose_move_right2;
   animation-duration: 13s;
   animation-delay: 15s;
   animation-timing-function: linear;
@@ -314,12 +302,21 @@ p {
   animation-fill-mode: backwards;
 }
 
-@keyframes goose-move-right {
+@keyframes goose_move_right1 {
   0% {
     transform: translate(-600%, 0);
   }
   100% {
-    transform: translate(300%, 0);
+    transform: translate(300%, 40%);
+  }
+}
+
+@keyframes goose_move_right2 {
+  0% {
+    transform: translate(-600%, 180%);
+  }
+  100% {
+    transform: translate(300%, -110%);
   }
 }
 
@@ -327,8 +324,8 @@ p {
     Dog animation
 ==================== */
 
-.dog_move {
-  animation-name: dog_move;
+.dog_move1 {
+  animation-name: dog_move1;
   animation-duration: 13s;
   animation-delay: 1s;
   animation-timing-function: linear;
@@ -336,12 +333,30 @@ p {
   animation-fill-mode: backwards;
 }
 
-@keyframes dog_move {
+.dog_move2 {
+  animation-name: dog_move2;
+  animation-duration: 9.5s;
+  animation-delay: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
+}
+
+@keyframes dog_move1 {
   0% {
     transform: translate(-150%, 0);
   }
   100% {
     transform: translate(400%, 0);
+  }
+}
+
+@keyframes dog_move2 {
+  0% {
+    transform: translate(-150%, 0);
+  }
+  100% {
+    transform: translate(400%, -90%);
   }
 }
 
@@ -396,7 +411,7 @@ p {
 
 .shrink {
   animation-name: shrink_kf;
-  animation-duration: 60s;
+  animation-duration: 10s;
   animation-iteration-count: 1;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
@@ -414,4 +429,60 @@ p {
     scale: 0 1;
     background-color: red;
   }
+}
+
+/* ===================
+    Animal positions
+====================== */
+
+.positionDuck1 {
+  top: 21%;
+}
+.positionDuck2 {
+  top: 41%;
+}
+.positionDuck3 {
+  top: 62%;
+}
+.positionGoose1 {
+  top: 27%;
+}
+.positionGoose2 {
+  top: 55%;
+}
+.positionDog1 {
+  top: 50%;
+}
+.positionDog2 {
+  top: 75%;
+}
+
+.speed1 {
+  animation-duration: 5s;
+  animation-delay: 1s;
+}
+.speed2 {
+  animation-duration: 6.2s;
+  animation-delay: 3s;
+}
+.speed3 {
+  animation-duration: 3.7s;
+  animation-delay: 1s;
+}
+.speed4 {
+  animation-duration: 4.3s;
+  animation-delay: 2s;
+}
+.speed5 {
+  animation-duration: 5.5s;
+  animation-delay: 1s;
+}
+
+.speedDog1 {
+  animation-duration: 7s;
+  animation-delay: 2s;
+}
+.speedDog2 {
+  animation-duration: 9s;
+  animation-delay: 4s;
 }
