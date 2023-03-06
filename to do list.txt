@@ -24,4 +24,5 @@ Ting jeg stadig mangler at tilføje.
 - Sæt ny farbe til knappen
 - Tilføj ekstra knap til at restarte spillet
 
-
+5. Ekstra
+- Få fikset at elementer nogle gange spawner midt i spillet
