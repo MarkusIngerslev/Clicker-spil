@@ -10,6 +10,10 @@ h2 {
   font-size: 4em;
 }
 
+.disabled {
+  user-select: none;
+}
+
 #screen {
   display: grid;
   grid-template-columns: 100%;
@@ -401,10 +405,6 @@ p {
   }
 }
 
-.paused {
-  animation-play-state: paused;
-}
-
 /* ========== Timer Animationer ==========*/
 
 .shrink {
@@ -483,4 +483,8 @@ p {
 .speedDog2 {
   animation-duration: 8s;
   animation-delay: 4s;
+}
+
+.paused {
+  animation-play-state: paused;
 }
