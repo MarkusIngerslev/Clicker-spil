@@ -1,7 +1,0 @@
-Ting jeg stadig mangler at tilføje.
-
-3. Game Over element
-- Tilføj ekstra knap til start menu
-
-4. Level Complete element
-- Tilføj ekstra knap til at restarte spillet
