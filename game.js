@@ -350,18 +350,18 @@ function duckRestart() {
   // laver lokal variabel
   let duck = this;
 
-  // Genstarter bevægelsen fra venstre mod højre
-  duck.classList.remove("duck_move1", "duck_move2", "duck_move3");
-
-  let move = Math.floor(Math.random() * 3) + 1;
-  duck.classList.add("duck_move" + move);
-
   // Sætter nu position for container
   duck.classList.remove("positionDuck1", "positionDuck2", "positionDuck3");
 
   let pos = Math.floor(Math.random() * 3) + 1;
 
   duck.classList.add("positionDuck" + pos);
+
+  // Genstarter bevægelsen fra venstre mod højre
+  duck.classList.remove("duck_move1", "duck_move2", "duck_move3");
+
+  let move = Math.floor(Math.random() * 3) + 1;
+  duck.classList.add("duck_move" + move);
 
   // sææter nu speed for container
   duck.classList.remove("speed1", "speed2", "speed3", "speed4", "speed5");
@@ -456,7 +456,7 @@ function dogClick() {
   dog.classList.add("paused");
 
   // laver zoom_out animation på selve spriten af hunden
-  dog.querySelector("img").classList.add("zoom_out");
+  dog.querySelector("img").classList.add("zoom_in");
 
   //når forsvind animationen er færdig så kør dogGone event
   dog.addEventListener("animationend", dogGone);
@@ -482,7 +482,7 @@ function dogGone() {
   dog.removeEventListener("animationend", dogGone);
 
   //Fjerner class med forsvind animation
-  dog.querySelector("img").classList.remove("zoom_out");
+  dog.querySelector("img").classList.remove("zoom_in");
 
   //Fjerner pause fra container
   dog.classList.remove("paused");
