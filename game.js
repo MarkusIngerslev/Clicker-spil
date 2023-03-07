@@ -31,6 +31,9 @@ function startGame() {
   // skjuler start skærmen efter spillet starter
   document.querySelector("#start").classList.add("hidden");
   document.querySelector("#game_elements").classList.remove("hidden");
+  // Fjerner alle bevægelser fra hver container
+  restartAnimation();
+
   // Til føjer bevægelse til hver container
   startAnimationer();
 
@@ -53,7 +56,6 @@ function startGame() {
 
 function startAnimationer() {
   // kalder funtion for at fjerne paused fra container
-  dyrPlay();
   document.querySelector("#duck1_container").classList.add("duck_move1");
   document.querySelector("#duck2_container").classList.add("duck_move2");
   document.querySelector("#duck3_container").classList.add("duck_move3");
@@ -164,6 +166,30 @@ function resetPoints() {
   displayPoints();
 }
 
+function restartAnimation() {
+  document
+    .querySelector("#duck1_container")
+    .classList.remove("duck_move1", "duck_move2", "duck_move3");
+  document
+    .querySelector("#duck2_container")
+    .classList.remove("duck_move1", "duck_move2", "duck_move3");
+  document
+    .querySelector("#duck3_container")
+    .classList.remove("duck_move1", "duck_move2", "duck_move3");
+  document
+    .querySelector("#goose1_container")
+    .classList.remove("goose_move1", "goose_move2");
+  document
+    .querySelector("#goose2_container")
+    .classList.remove("goose_move1", "goose_move2");
+  document
+    .querySelector("#dog1_container")
+    .classList.remove("dog_move1", "dog_move2");
+  document
+    .querySelector("#dog2_container")
+    .classList.remove("dog_move1", "dog_move2");
+}
+
 function startTimer() {
   // sætter timer-animationen i gang
   document.querySelector("#time_sprite").classList.add("shrink");
@@ -177,6 +203,7 @@ function startTimer() {
 function timeIsUp() {
   console.log("Tiden er gået!");
 
+  // hvis ens score er 30 eller mere efter tid så skal man gå videre til level complete.
   if (points >= 30) {
     levelComplete();
   } else {
@@ -212,8 +239,13 @@ function decrementLives() {
   console.log("decrementLives");
   lives--;
 
-  if (lives <= 0) {
+  if (lives <= 0 && points < 30) {
     gameOver();
+    document.querySelector(
+      "#gameOverText"
+    ).textContent = `Du nået at få : ${points} points.`;
+  } else if (lives <= 0 && points >= 30) {
+    levelComplete();
   } else {
     displayDecrementedLives();
   }
@@ -246,7 +278,7 @@ function levelComplete() {
   stopGame();
   document.querySelector(
     "#endText"
-  ).textContent = `Du nået at få ${points} points🥳`;
+  ).textContent = `Du nået át få en score af: ${points} points🥳`;
 }
 
 function stopGame() {
@@ -278,55 +310,10 @@ function stopGame() {
     .removeEventListener("mousedown", gooseClick);
 
   // Stopper animation
-
-  dyrPaused();
-
-  document
-    .querySelector("#duck1_container")
-    .classList.remove("duck_move1", "duck_move2", "duck_move3");
-  document
-    .querySelector("#duck2_container")
-    .classList.remove("duck_move1", "duck_move2", "duck_move3");
-  document
-    .querySelector("#duck3_container")
-    .classList.remove("duck_move1", "duck_move2", "duck_move3");
-  document
-    .querySelector("#goose1_container")
-    .classList.remove("goose_move1", "goose_move2");
-  document
-    .querySelector("#goose2_container")
-    .classList.remove("goose_move1", "goose_move2");
-  document
-    .querySelector("#dog1_container")
-    .classList.remove("dog_move1", "dog_move2");
-  document
-    .querySelector("#dog2_container")
-    .classList.remove("dog_move1", "dog_move2");
+  restartAnimation();
 
   // Fjerner timer
   document.querySelector("#time_sprite").classList.remove("shrink");
-}
-
-// Funtion til at pause alle game elementer
-function dyrPaused() {
-  console.log("DyrPaused");
-  document.querySelector("#duck1_container").classList.add("paused");
-  document.querySelector("#duck2_container").classList.add("paused");
-  document.querySelector("#duck3_container").classList.add("paused");
-  document.querySelector("#goose1_container").classList.add("paused");
-  document.querySelector("#goose1_container").classList.add("paused");
-  document.querySelector("#dog1_container").classList.add("paused");
-  document.querySelector("#dog2_container").classList.add("paused");
-}
-// Funtion til at fjerne pause fra game elementer
-function dyrPlay() {
-  document.querySelector("#duck1_container").classList.remove("paused");
-  document.querySelector("#duck2_container").classList.remove("paused");
-  document.querySelector("#duck3_container").classList.remove("paused");
-  document.querySelector("#goose1_container").classList.remove("paused");
-  document.querySelector("#goose1_container").classList.remove("paused");
-  document.querySelector("#dog1_container").classList.remove("paused");
-  document.querySelector("#dog2_container").classList.remove("paused");
 }
 
 // ======================================== \\

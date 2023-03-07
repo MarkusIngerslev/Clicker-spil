@@ -6,10 +6,6 @@ img {
   width: 100%;
 }
 
-h2 {
-  font-size: 4em;
-}
-
 .disabled {
   user-select: none;
 }
@@ -59,7 +55,7 @@ h2 {
   display: grid;
   justify-content: center;
   align-content: center;
-  background-image: linear-gradient(150deg, #20c903 0%, #09793b 100%);
+  background-image: linear-gradient(150deg, #dda15e 0%, #bc6c25 100%);
   color: #ffffff;
 }
 
@@ -217,14 +213,20 @@ button {
   padding: 0.5em 1em;
   font-size: 2em;
   margin: auto;
-  background-color: #ffad01;
-  color: #fff4bf;
-  border: 10px solid #ffc72e;
+  background-color: #283618;
+  color: #fefae0;
+  border: 10px solid #606c38;
   cursor: pointer;
   border-radius: 10px;
 }
 
+h2 {
+  color: #283618;
+  font-size: 4em;
+}
+
 p {
+  color: #fefae0;
   text-align: center;
   font-size: 1.5em;
   margin: 1em 0 1.5em;
