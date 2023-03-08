@@ -239,11 +239,12 @@ function decrementLives() {
   console.log("decrementLives");
   lives--;
 
+  ingenLiv();
+}
+
+function ingenLiv() {
   if (lives <= 0 && points < 30) {
     gameOver();
-    document.querySelector(
-      "#gameOverText"
-    ).textContent = `Du nået at få : ${points} points.`;
   } else if (lives <= 0 && points >= 30) {
     levelComplete();
   } else {
@@ -268,6 +269,9 @@ function gameOver() {
   document.querySelector("#sound_gameOver").volume = 0.25;
   document.querySelector("#sound_gameOver").play();
   stopGame();
+  document.querySelector(
+    "#gameOverText"
+  ).textContent = `Du nået at få : ${points} points.`;
 }
 function levelComplete() {
   console.log("levelComplete");
@@ -526,13 +530,13 @@ function dogClick() {
 function dogGone() {
   console.log("dogGone");
   let dog = this;
-  //Fjerner evnet der startede functionen
+  // Fjerner evnet der startede functionen
   dog.removeEventListener("animationend", dogGone);
 
-  //Fjerner class med forsvind animation
+  // Fjerner class med forsvind animation
   dog.querySelector("img").classList.remove("zoom_in");
 
-  //Fjerner pause fra container
+  // Fjerner pause fra container
   dog.classList.remove("paused");
 
   // genstarter alle classes for dog element
@@ -544,7 +548,7 @@ function dogGone() {
 
 function dogRestart() {
   console.log("dogRestart");
-  //Genstarter bevægelse fra venstre mod højre
+  // Genstarter bevægelse fra venstre mod højre
   dogPosition.call(this);
 
   // sætter ny bevægelse på container
@@ -559,9 +563,7 @@ function dogPosition() {
 
   // Sætter nu position for container
   dog.classList.remove("positionDog1", "positionDog2");
-
   let pos = Math.floor(Math.random() * 2) + 1;
-
   dog.classList.add("positionDog" + pos);
 }
 
@@ -569,7 +571,7 @@ function dogMove() {
   // laver lokal variabel
   let dog = this;
 
-  //Genstarter bevægelse fra venstre mod højre
+  // Genstarter bevægelse fra venstre mod højre
   dog.classList.remove("dog_move1", "dog_move2");
   let move = Math.floor(Math.random() * 2) + 1;
   dog.classList.add("dog_move" + move);
